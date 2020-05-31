@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+           
+            function myFunction(){
+                var a = document.getElementById("desc").value;
+                document.getElementById("pid").innerHTML = a;
+            }
+            
+        </script>
+    </head>
+    <body>
+        內容:<textarea name="desc" id="desc">some description....</textarea>
+        <iframe id="iframe" src="iframe1_1.html"></iframe>
+        
+        <p id="pid" >abcd</p>
+        <button onclick="myFunction()">try it</button>
+    </body>
+</html>

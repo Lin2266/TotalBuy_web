@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Dialog - Modal form</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+</head>
+<body>
+ 
+<button onclick="openDialog();">開啟對話框</button> 
+
+<div id="dialog" title="文稿明細">
+    <table style="font-size: 20px" border="1px" cellspadding="5" cellspacing="0" width="500px" height="300px">
+        <tr><td>別名</td><td>文號</td><td>附件</td></tr>
+        <tr><td>別名</td><td>文號</td><td>附件</td></tr>
+        <tr><td>別名</td><td>文號</td><td>附件</td></tr>
+        <tr><td>別名</td><td>文號</td><td>附件</td></tr>
+        <tr><td>別名</td><td>文號</td><td>附件</td></tr>
+        <tr><td>別名</td><td>文號</td><td>附件</td></tr>
+        <tr><td>別名</td><td>文號</td><td>附件</td></tr>
+        <tr><td>別名</td><td>文號</td><td>附件</td></tr>
+    </table>
+</div>
+
+<script>
+// 設定對話框
+$("#dialog").dialog({
+  autoOpen: false, // 對話框一開始隱藏
+  width:600,
+  height:300
+//  close:function(event, ui){ // 對話框關閉時觸發的方法
+//    alert("對話框關閉");
+//  }
+});
+
+function openDialog(){
+  $("#dialog").dialog("open"); // 點選按鈕時開啟對話框
+}
+</script>
+
+ 
+</body>
+</html>

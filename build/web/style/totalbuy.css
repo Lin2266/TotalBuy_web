@@ -1,0 +1,108 @@
+/* 
+    Created on : 2015/9/3, 上午 10:05:31
+    Author     : Administrator
+CSS註解要用/ *   * /  不然下面的css設定會無法顯示
+*/
+
+body{
+    background-color: #ccffcc;
+    font-family:Arial, "文泉驛正黑", "WenQuanYi Zen Hei", 
+        "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei",
+        "標楷體", "DFKai-SB", sans-serif;
+}
+p{color: #993300}
+input,textarea,select{width: 200px; font-size: medium;padding: 2px}
+input[type='radio'], input[type='checkbox'], input[type='submit']{width: inherit}
+
+body{
+    
+    background-image: url(../images/background.gif);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;             
+    background-attachment: fixed; 
+/*    background-attachment: fixed; 　　//背景固定 
+    其中background-position 是改變圖檔固定的位置 
+左上：left top 
+左中：left center 
+左下：left bottom 
+中上：center top 
+中中：center center 
+中下：center bottom 
+右上：right top 
+右中：right center 
+右下：right bottom */
+
+}
+#header{
+/*                    margin: 1%;*/
+    
+    background-image: url(../images/logo.png);
+    background-repeat: no-repeat;
+    background-position: 25% 28%;   //至中logo左右
+    color: #eee;
+    text-align: center ; //字靠哪邊
+    padding: 2ex; //框的高度
+   
+    //頁首動態
+    width: 100px;
+    height: 100px;
+    position: relative;
+    -webkit-animation: mymove 5s infinite;  //Chrome, Safari, Opera 
+    animation: mymove 5s infinite;
+} 
+
+ //Chrome, Safari, Opera 頁首動態
+@-webkit-keyframes mymove {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+
+#nav>a:hover{
+    
+    background-color: #99ccff;color: #0099ff;
+}
+#nav>a:active{
+    color: red;
+}
+#section{
+/*    background-color:#eee;*/
+    float: left;width:10%;
+    height: 77vh;
+}
+#article{
+/*    background-color:#eee;*/
+    float: left;width:80%;
+    height: 77vh;
+}
+#aside{
+/*    background-color:#eee;*/
+    float: right;width:10%;
+    height: 77vh;
+}
+#footer{
+/*    background-color: #999999;*/
+    color: #eee;text-align: center;
+}
+label{padding-left: 10px}
+/*id元素-屬性>下層元素*/
+#pro-list>li{
+    margin: 5px;
+    display: inline-block;
+    width:210px; height: 180px; overflow: auto;
+    padding: 2px;
+    border: solid thin lightgrey;
+    box-shadow: 2px 2px 2px #888888;                
+}
+/*class屬性內層的img標籤*/
+.logo img{
+    width:100px;
+}
+hr{
+    border: 0; height: 1px; 
+   /*background-image: linear-gradient(to right, rgba(55,0,55, 0), rgba(55,0,55, 0.75), rgba(55,0,55, 0));*/
+}

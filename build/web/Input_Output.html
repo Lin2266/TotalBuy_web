@@ -1,0 +1,835 @@
+
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<title>Input &amp; Output</title>
+<meta http-equiv="Content-Type" content="text/html; charset=big5">
+<link rel="File-List" href="02_input_output.files/filelist.xml">
+
+<!--[if !mso]>
+<style>
+v\:*         { behavior: url(#default#VML) }
+o\:*         { behavior: url(#default#VML) }
+.shape       { behavior: url(#default#VML) }
+</style>
+<![endif]--><!--[if gte mso 9]>
+<xml><o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]-->
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<h1 align="center"><font face="標楷體">基本輸入輸出(Input &amp; Output)</font></h1> 
+<h3 align="left"><img src="peopleLine.gif" width="560" height="26"></h3>
+<h3 align="left"><img src="blueball.gif" width="20" height="20"> <font face="標楷體">如何從螢幕中讀取一個character?</font></h3> 
+<blockquote>
+    <h4 align="left"><font face="標楷體">=&gt; 我們使用 <font color="#0000FF" size="5" face="標楷體"><b> System.in (標準輸入) 
+    </b></font> 當資料來源</font></h4>
+    <h4 align="left"><font face="標楷體">=&gt; 利用 <font color="#0000FF" size="5" face="標楷體"><b>InputStreamReader 
+    </b></font> 串流物件幫我們讀取<font color="#0000FF" size="5" face="標楷體"><b>character</b></font>!</font></h4>
+    <blockquote>
+        <h4 align="left"><font face="標楷體">read </font></h4>
+    </blockquote>
+    <div align="center">
+     <center>
+    <table border="1" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="508">
+                <pre><img src="Code.gif" width="31" height="35"><font face="標楷體" size="4">完整範例
+
+</font><font face="MS Sans Serif" size="3">import java.io.*;
+public class ReadCharacter{
+  public static void main(String args[])
+  {
+     try {
+         <b><font color="#FF0000">InputStreamReader</font></b> is= new InputStreamReader(<font color="#00CC00">System.in</font>);</font></pre>
+                <pre><font face="MS Sans Serif" size="3">        <b><i><font color="#0000FF"> /</font><font color="#CC66FF">/ 注意: 宣告一個成員的陣列</font></i></b>
+         char a[]; a=new char[<b><font color="#0000FF">1</font></b>];     
+	 
+         System.out.println(&quot;Please Input a Character&quot;);
+         <b><font color="#FF0000">is.read(a);</font></b>
+
+         System.out.println(&quot;You Input: &quot;);
+         System.out.println(a);
+        }
+      catch (IOException e)
+      {
+          System.out.println(&quot;Error&quot;);
+      }
+  }
+}</font></pre>
+            </td>
+        </tr>
+    </table>
+     </center>
+    </div>
+    <p><img src="ButtonLine.gif" width="560" height="29"></p>
+</blockquote>
+<h3><img src="blueball.gif" width="20" height="20"><font face="標楷體">那麼要如何讀取一個字串?</font></h3>
+<blockquote>
+    <table width="75%" border="1" bgcolor="#CCFFFF" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                <pre><font face="Arial, Helvetica, sans-serif" size="3"> </font><font face="MS Sans Serif" size="3"><b><i><font color="#CC66FF">/ 注意: 宣告100 個成員的陣列</font></i></b></font></pre>
+                <pre><font face="Arial, Helvetica, sans-serif" size="3"> char a[]; a=new char[100];
+	 
+ System.out.println(&quot;Please Input a String&quot;);</font></pre>
+                <pre><font size="3"><font face="Arial, Helvetica, sans-serif"> <i><b><font color="#CC66FF">// </font></b></i></font><i><b><font color="#CC66FF">把字串放到 <font face="Arial, Helvetica, sans-serif">a </font>陣列中</font></b></i><font face="Arial, Helvetica, sans-serif">
+<font color="#FF0000">  <b>    is.read(a);  </b></font><b>        </b>                                             </font>
+<font face="Arial, Helvetica, sans-serif"> System.out.println(a);</font></font></pre>
+            </td>
+        </tr>
+    </table>
+        </blockquote>
+<h3>　</h3>
+<h4><img src="blueball.gif" width="20" height="20">基本觀念</h4>
+<blockquote>
+    <h4><font face="標楷體"><img src="point.gif" width="32" height="32">程式利用 Stream 物件 把放在Source的資料讀取出來</font></h4> 
+    <h4 align="center"><img src="19stream.gif" width="438" height="108"></h4>
+    <h4 align="left"><font face="標楷體"><img src="point.gif" width="32" height="32">程式亦可以利用 Stream 物件 把資料寫到資料來源(source)中</font></h4> 
+    <h4 align="center"><img src="20stream2.gif" width="429" height="108"></h4>
+    <h4 align="left"><font face="標楷體" size="5">基本上, 要使用io  動作,則要<b><font color="#FF0000">  
+    </font><font color="#0000FF"> import java.io</font></b> <font color="#0000FF"> 
+    </font> package.</font></h4>
+    <blockquote>
+        <h4><font size="5">第一部分</font><font face="Arial, Helvetica, sans-serif" size="5">. 
+        </font><font size="5"><font color="#FF0000">文字</font>方面的串流 
+        </font><font face="Arial, Helvetica, sans-serif" size="5">(</font><font color="#0000FF" face="Arial, Helvetica, sans-serif">C</font><font face="Arial, Helvetica, sans-serif"><font color="#0000FF">haracter</font> 
+        Stream)</font></h4>
+        <ul>
+            <li>
+                <h4><font face="Arial, Helvetica, sans-serif" color="#00CC00" size="5">Reader</font><font face="Arial, Helvetica, sans-serif"> abstract super class: for <font color="#FF0000"><b>reading 16-bit characters</b></font></font></h4> 
+                <p align="center"><b><font size="5" color="#0000FF">所有的文字</font><font size="5" color="#FF0000">讀取</font><font size="5" color="#0000FF">串流 
+                ==&gt; 全部都繼承自 </font><font size="5" color="#FF0000">Reader</font></b></p>
+                <blockquote>
+                    <div align="center"><img src="23reader.gif" width="462" height="169"></div>
+                </blockquote>
+            </li>
+        </ul>
+    </blockquote>
+</blockquote>
+                <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 範例:</h4>
+          <div align="center">
+           <center>
+    <table width="568" border="1" bgcolor="#CCFFFF" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="566">
+            <p><font size="4" face="Arial">&nbsp;InputStreamReader is = new <font color="#FF0000">InputStreamReader</font>(System.in);&nbsp;&nbsp;&nbsp;</font></p>
+            <p><font size="4" face="Arial">&nbsp;char x[]=new int[1];</font></p>
+            <p><font size="4" face="Arial">&nbsp;is.read(x);</font></p>
+            </td>
+        </tr>
+    </table>
+           </center>
+</div>
+<blockquote>
+    <blockquote>
+        <blockquote>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+          <p>　</p>
+        </blockquote>
+        <ul>
+            <li>
+                <h4><font face="Arial, Helvetica, sans-serif" color="#009933" size="5">Writer</font><font face="Arial, Helvetica, sans-serif"> abstract super class: for <b><font color="#FF0000">writing 16-bit characters</font></b></font></h4> 
+                <p align="center"><b><font size="5" color="#0000FF">所有的文字</font><font size="5" color="#FF0000">寫入</font><font size="5" color="#0000FF">串流 
+                ==&gt; 全部都繼承自 </font><font size="5" color="#FF0000">Writer</font></b></p>
+                <blockquote>
+                    <p align="center"><img src="24writer.gif" width="465" height="222"></p>
+                </blockquote>
+            </li>
+        </ul>
+    </blockquote>
+</blockquote>
+                    <p align="left">&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 範例:</b></p>
+            <div align="center">
+             <center>
+    <table border="1" bgcolor="#CCFFFF" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="566">
+                    <p align="left"><b>&nbsp;</b><font face="Arial"><font size="4">OutputStreamWriter os= new
+                    </font> <font color="#FF0000" size="4">OutputStreamWriter</font><font size="4">(System.out);</font></font></p>
+                    <p align="left"><font face="Arial"><font size="4">&nbsp;os.</font><font color="#0000FF" size="4">write</font><font size="4">(&quot;Hello&quot;);</font></font></p>
+                    <p align="left"><font face="Arial" size="4">&nbsp;os.close();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    // 將資料寫出去</font></p>
+            </td>
+        </tr>
+    </table>
+             </center>
+</div>
+<blockquote>
+    <blockquote>
+        <blockquote>
+          <blockquote>
+                    <p align="left">　</p>
+          </blockquote>
+        </blockquote>
+        <h4><font size="5">第二部分 二元檔案串流 </font><font face="Arial, Helvetica, sans-serif">(byte 
+        stream)</font></h4>
+        <p align="center"><b><font size="5" color="#0000FF">所有的 Byte</font><font size="5" color="#0000FF"> 
+        </font><font size="5" color="#FF0000">寫入</font><font size="5" color="#0000FF">串流 
+        ==&gt; 全部都繼承自 </font><font size="5" color="#FF0000">InputStream</font></b></p>
+        <ul>
+            <li>
+                <h4><font face="Arial, Helvetica, sans-serif"><font color="#009933" size="5" face="Arial, Helvetica, sans-serif"><b>InputStream</b></font>: for reading 8-bit bytes</font></h4> 
+            </li>
+        </ul>
+        <blockquote>
+            <p align="center"><img src="25inputs.gif" width="462" height="199"></p>
+            <p align="left">　</p>
+        </blockquote>
+        <ul>
+            <li>
+                <h4><font face="Arial, Helvetica, sans-serif"><font color="#009933" size="5" face="Arial, Helvetica, sans-serif"><b>OutputStream</b></font>: for writing 8-bit bytes</font></h4> 
+            </li>
+        </ul>
+        <blockquote>
+            <p align="center"><img src="26outputs.gif" width="458" height="142"></p>
+            <p align="center">　</p>
+        </blockquote>
+    </blockquote>
+    <h3><font face="Arial, Helvetica, sans-serif">讀寫資料的通用方法</font></h3> 
+    <div align="center">
+     <center>
+    <table border="1" bgcolor="#CCFFFF" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="566">
+            <p><font size="4" face="Arial">&nbsp;int read()<br>
+            &nbsp;int read(char cbuf[])<br>
+            &nbsp;int read(char cbuf[], int offset, int length)</font></p>
+            <p><font size="4" face="Arial">&nbsp;int write(int c)<br>
+                &nbsp;int write(char cbuf[])<br>
+                &nbsp;int write(char cbuf[], int offset, int length)</font></p>
+            </td>
+        </tr>
+    </table>
+        </center>
+    </div>
+    <blockquote>
+        <ul>
+            <p></p>
+            <hr>
+            
+        </ul>
+        <p align="center"><b><font size="5">讀取資料的部分</font></b></p>
+    </blockquote>
+</blockquote>
+<h3><img src="blueball.gif" width="20" height="20"><font face="標楷體">如何從檔案中讀取資料</font>?</h3>
+<blockquote>
+    <h4>=&gt; 資料來源 c:\\test\\test.txt</h4> 
+    <h4>=&gt; 利用 FileReader(檔案名稱);   // file stream 讀取檔案資訊</h4> 
+    <p>讀取<font color="#0000FF" size="5"><b>文字檔</b></font>的資料</p>
+    <table width="75%" border="1">
+        <tr>
+            <td>
+                <pre><font size="4"><font face="Arial, Helvetica, sans-serif">import java.io.*;
+public class ReadFile{
+    public static void main(String arg[]) throws Exception
+    {
+        // 1. </font>建立一個 <font face="Arial, Helvetica, sans-serif">File<font color="#FF0000">Reader</font> </font>文字讀取物件<font face="Arial, Helvetica, sans-serif">
+        <b><font color="#0000FF">FileReader</font><font color="#FF0000"> FSource=new </font></b></font></font><b><font size="4"><font color="#0000FF" face="Arial, Helvetica, sans-serif">FileReader</font><font color="#FF0000">(&quot;c:\\test\\test.txt&quot;); </font></font></b><font face="Arial, Helvetica, sans-serif" size="4">
+        
+        char buffer[];buffer=new char[100];</font></pre>
+                <pre><font face="Arial, Helvetica, sans-serif" size="4">
+        // 2. </font><font size="4">利用 </font><font size="5"><font face="Arial, Helvetica, sans-serif" size="4">Reader </font><font size="4">物件的 </font><font face="Arial, Helvetica, sans-serif" size="4"><font color="#0000FF">read</font> </font><font size="4">方法讀文字資料</font><font face="Arial, Helvetica, sans-serif" size="4"> 
+        <b><font color="#FF0000">FSource.</font></b></font><font size="4"><b><font color="#0000FF" face="Arial, Helvetica, sans-serif">read</font><font color="#FF0000">(buffer);                                                   </font></b>
+        </font><font face="Arial, Helvetica, sans-serif" size="4">System.out.println(buffer);
+
+    }
+}</font><font size="4">
+</font></font></pre>
+            </td>
+        </tr>
+    </table>
+    <h4>問題 ?? <font color="#0000FF">我怎麼知道</font><u><font size="5" color="#009933">要配置多少的記憶體</font></u><font color="#0000FF">才能裝滿整個檔案 </font></h4>
+    <h4>=&gt; 利用 File 物件</h4> 
+    <blockquote>
+        <h4><font color="#FF0000">File f= new File(filename);</font></h4> 
+        <h4><font color="#FF0000">int size=(int) f.length();</font></h4>
+    </blockquote>
+    <h4>看看下面的程式碼就明白了</h4>
+    <table width="75%" border="1">
+        <tr>
+            <td> 
+                <h4><img src="Code.gif" width="31" height="35">  ReadFile00.java</h4>
+                <pre><font size="4"><font face="Arial, Helvetica, sans-serif">import java.io.*;
+public class <font color="#0000FF">ReadFile00</font>{
+    public static void main(String arg[]) throws Exception
+    {
+        // 1.</font>建立 <font face="Arial, Helvetica, sans-serif">File </font>物件<font face="Arial, Helvetica, sans-serif">
+       <font color="#FF0000"> File f=new File(&quot;<a href="file:///c://test//test.txt">c:\\test\\test.txt</a>&quot;);</font></font></font></pre>
+                <pre><font color="#FF0000" face="Arial, Helvetica, sans-serif" size="4">        </font><font face="Arial, Helvetica, sans-serif" size="4">// 2. </font><font size="4">讀取 檔案的大小</font><font color="#FF0000" face="Arial, Helvetica, sans-serif" size="4">
+        int size=(int)f.length();</font></pre>
+                <pre><!--[if gte vml 1]><v:shape id="_x0000_s1026"
+ style='position:absolute;left:107.25pt;top:3378.75pt;width:254.25pt;height:87.75pt;
+ z-index:2' coordsize="339,117" path="m,hdc73,5,147,4,220,5v10,-2,19,1,29,3c258,14,270,24,280,28v18,7,36,10,53,19c336,52,339,63,339,63v-2,23,-6,32,-27,41c306,106,301,109,295,111v-9,3,-3,1,-10,3c284,114,281,116,282,115v3,-2,8,-4,8,-4c287,116,290,117,295,117e"
+ filled="f">
+ <v:path arrowok="t"/>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:2;left:142px;top:4504px;width:342px;height:119px'><img
+width=342 height=119 src="02_input_output.files/image001.gif" v:shapes="_x0000_s1026"></span><![endif]><!--[if gte vml 1]><v:shape
+ id="_x0000_s1025" alt="" style='position:absolute;left:92.25pt;top:3366.75pt;
+ width:15.75pt;height:14.25pt;z-index:1' coordsize="21,19" path="m9,19hdc4,18,3,18,1,13,2,7,,2,6,v3,,7,,10,1c21,3,17,11,15,13,11,17,1,15,9,19xe"
+ filled="f">
+ <v:path arrowok="t"/>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:1;left:122px;top:4488px;width:23px;height:22px'><img width=23
+height=22 src="02_input_output.files/image002.gif" v:shapes="_x0000_s1025"></span><![endif]><font color="#FF0000" face="Arial, Helvetica, sans-serif" size="4">        </font><font face="Arial, Helvetica, sans-serif" size="4">// 3. </font><font size="4">建立 </font><font face="Arial, Helvetica, sans-serif" size="4">FileReader</font><font size="4">物件</font><font face="Arial, Helvetica, sans-serif" size="4">,</font><font size="4">以讀取<b><font color="#0000FF">文字字串</font></b><font color="#FF0000" face="Arial, Helvetica, sans-serif">
+        FileReader FSource=new FileReader(f); </font><font face="Arial, Helvetica, sans-serif">
+        
+        // 4. </font>配置適當大小的記憶體<font face="Arial, Helvetica, sans-serif">
+	    char buffer[];buffer=new char[<font color="#0000FF"><b>size</b></font>];</font></font></pre>
+                <pre><font size="4"><font face="Arial, Helvetica, sans-serif">
+        // 5. </font>利用 <font face="Arial, Helvetica, sans-serif">FileReader </font>物件的 <font face="Arial, Helvetica, sans-serif"><font color="#0000FF"><b>Reader</b></font> </font>方法讀取資料<font face="Arial, Helvetica, sans-serif">
+        FSource.read(buffer); </font></font></pre>
+                <pre><font size="4"><font face="Arial, Helvetica, sans-serif">                          </font>
+    <font face="Arial, Helvetica, sans-serif">System.out.println(buffer);</font></font></pre>
+                <pre><font face="Arial, Helvetica, sans-serif" size="4">    }
+}</font></pre>
+            </td>
+        </tr>
+    </table>
+    <blockquote>　</blockquote>
+</blockquote>
+<h3><img src="blueball.gif" width="20" height="20"><font face="標楷體">效率的問題</font></h3>
+<blockquote>
+    <h4><font face="標楷體">=&gt; 可以<font size="5" face="標楷體" color="#0000FF">先把資料放到buffer</font>中,接著一行一行的讀出來.</font></h4>
+    <h4><font face="標楷體">=&gt; <font size="5">如何做? <font color="#0000FF">(利用 
+    </font><font color="#FF0000">BufferedReader</font><font color="#0000FF"> 把 
+    FileReader&nbsp;包起來)</font></font></font></h4>
+    <blockquote>
+        <h4><font face="Arial">1. FileReader FileStream=new FileReader(&quot;c:\\test\\test.txt&quot;);</font></h4>
+        <h4><font face="Arial">2. <font color="#FF0000"> BufferedReader</font> 
+        BufferedStream=new </font> <font color="#FF0000" size="5" face="Arial">BufferReader</font><font face="Arial">(FileStream);</font></h4>
+        <h4><font face="Arial">3. BufferedStream.</font><font color="#0000FF" size="5" face="Arial"><b>readLine</b></font><font face="Arial">(); // 傳回一行</font></h4> 
+    </blockquote>
+        <p><font size="5">注意: 當檔案結束時, readLine() 會傳回 null值.</font></p>
+    <table width="75%" border="1">
+        <tr>
+            <td>
+                <pre><font size="4"><font face="Arial, Helvetica, sans-serif">import java.io.*;
+public class ReadFile2 {
+    public static void main(String arg[]) throws Exception
+    {
+       <i> // 1. 建立<font color="#0000FF"><b>文字</b></font>檔讀取物件</i>
+       <font color="#000000"> <b>File</b></font><b><font color="#FF0000">Reader</font><font color="#000000"> FileStream=new FileReader(&quot;c:\\test\\test.txt&quot;); </font></b>
+        
+       <i> // 2. </i></font><i><font face="Arial, Helvetica, sans-serif">透過 BufferedReader 幫我們讀資料</font></i><b><font color="#009933" face="Arial, Helvetica, sans-serif">
+        </font><font color="#0000FF" face="Arial, Helvetica, sans-serif">BufferedReader</font><font color="#009933" face="Arial, Helvetica, sans-serif"> </font><font face="Arial, Helvetica, sans-serif">BufferedStream</font><font color="#009933" face="Arial, Helvetica, sans-serif">=new </font><font color="#0000FF" face="Arial, Helvetica, sans-serif">BufferedReader</font><font color="#009933" face="Arial, Helvetica, sans-serif">(FileStream);
+	 
+        </font></b><font face="Arial, Helvetica, sans-serif"><i> //讀取資料</i></font></font></pre>
+                <pre><font face="Arial, Helvetica, sans-serif" size="4">     <b><font color="#009933">String data;</font></b>
+     do{</font></pre>
+                <pre><font face="Arial, Helvetica, sans-serif" size="4">         <i>// 3. </i></font><i><font size="4" face="Arial, Helvetica, sans-serif">接著 <font color="#0000FF">一行一行 </font>的把資料從檔案中讀出來</font></i><font face="Arial, Helvetica, sans-serif" size="4">
+            data=BufferedStream.<font color="#0000FF"><b>readLine</b></font>();</font></pre>
+                <pre><font face="Arial, Helvetica, sans-serif" size="4">        <i> // 4. </i></font><font size="4"><font face="Arial, Helvetica, sans-serif"><i>當讀取到最後一行後,</i>
+         <font color="#FF0000">   if(data==null)
+                break;          // </font></font><font color="#FF0000" face="Arial, Helvetica, sans-serif">讀到檔案結束</font></font></pre>
+                <pre><font face="Arial, Helvetica, sans-serif" size="4">           System.out.println(data);
+        } while(true);      
+    } // end of main
+}</font>
+</pre>
+            </td>
+        </tr>
+    </table>
+</blockquote>
+<h3>5.2<font face="Arial, Helvetica, sans-serif">  </font> 字元輸入</h3>
+<blockquote>
+    <h4><img src="blueball.gif" width="20" height="20">由鍵盤輸入字串</h4>
+</blockquote>
+<div align="center">
+ <center>
+    <table border="1" bgcolor="#CCFFFF" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="566">
+        <h4><i>// 1. 建立 InputStreamReader 串流</i></h4> 
+        <blockquote>
+            <h4><font color="#0000FF">InputStreamReader is=new InputStreamReader(System.in);</font></h4> 
+        </blockquote>
+        <h4><i>// 2. Buffer 起來</i></h4> 
+        <blockquote>
+            <h4><font color="#0000FF">BufferedReader br= new BufferedReader(is);</font></h4> 
+        </blockquote>
+        <h4><i>// 3. 讀取字串</i></h4> 
+        <blockquote>
+            <h4><font color="#0000FF">String s=br.readLine();</font></h4> 
+        </blockquote>
+            </td>
+        </tr>
+    </table>
+        </center>
+</div>
+<blockquote>
+    <h4><img src="blueball.gif" width="20" height="20"> 將字串轉換成 primitive type </h4> 
+</blockquote>
+<div align="center">
+ <center>
+    <table border="1" bgcolor="#CCFFFF" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="566">
+        <h4>&nbsp;boolean b= new Boolean(s).<font color="#0000FF">booleanValue</font>();</h4> 
+        <h4>&nbsp;int i=Integer.parseInt(s);</h4>
+        <h4>&nbsp;long l= Long.parseLong(s);</h4>
+        <h4>&nbsp;float f=Float.parseFloat(s);</h4>
+        <h4>&nbsp;double d=Double.parseDouble(s);</h4>
+            </td>
+        </tr>
+    </table>
+        </center>
+</div>
+<blockquote>
+    <h4>　</h4> 
+</blockquote>
+    <h4>&nbsp;利用 Buffer 的方式,由鍵盤讀取Keyin值的範例.</h4> 
+<blockquote>
+    <table width="75%" border="1">
+        <tr>
+            <td>
+                <h4><img src="Code.gif" width="31" height="35"> KeyinStr.java </h4>
+                <pre><font size="4" face="Arial, Helvetica, sans-serif">/******************** KeyinStr.java *********************/
+import java.io.*;
+public class <font color="#0000FF">KeyinStr {</font>
+  public static void main(String args[])<font color="#00CC00"><b> throws Exception {</b></font>
+    
+</font><font color="#0000FF" face="Arial, Helvetica, sans-serif" size="4">    BufferedReader br=new BufferedReader(
+                                          new InputStreamReader(System.in));</font><font size="4" face="Arial, Helvetica, sans-serif">
+   
+    System.out.print(&quot;輸入一個字串: &quot;);
+    System.out.flush();</font></pre>
+                <pre><font size="4" face="Arial, Helvetica, sans-serif">
+</font><font face="Arial, Helvetica, sans-serif" size="4">   <font color="#0000FF"> String s=br.readLine();</font>
+    System.out.println(&quot;您所輸入的字串是: &quot;+s);
+    }
+  }</font><font size="3" face="Arial, Helvetica, sans-serif">
+&#26;</font></pre>
+            </td>
+        </tr>
+    </table>
+    <h4>轉換範例: 由鍵盤輸入數字,輸出是該數字的平方</h4> 
+    <h4>=&gt; 利用 Double.parseDouble(s)</h4> 
+    <h4>(KeyinValue.java)</h4>
+    <table width="75%" border="1">
+        <tr>
+            <td>
+                <h4><img src="Code.gif" width="31" height="35">KeyinValue.java</h4>
+                <pre><font face="Arial, Helvetica, sans-serif" size="3">/</font><font face="Arial, Helvetica, sans-serif" size="4">******************* KeyinValue.java ********************/
+import java.io.*;
+public class <font color="#0000FF">KeyinValue {</font>
+ 
+  public static void main(String args[]) throws Exception {
+    
+    </font><font color="#0000FF" face="Arial, Helvetica, sans-serif" size="4">   BufferedReader br=new BufferedReader(
+                      new InputStreamReader(System.in));</font><font face="Arial, Helvetica, sans-serif" size="4">
+    
+       System.out.print(&quot;輸入一個數值字串: &quot;);
+       System.out.flush();</font></pre>
+                <pre><font face="Arial, Helvetica, sans-serif" size="4">
+       String s=br.readLine();
+    <font color="#FF0000">   double d=Double.parseDouble(s);</font></font></pre>
+                <pre><font face="Arial, Helvetica, sans-serif" size="4">
+       System.out.println(&quot;您所輸入數值的兩倍是: &quot;+2.0*d);
+   }
+}</font>
+&#26;</pre>
+            </td>
+        </tr>
+    </table>
+    <h4>　</h4>
+    <h4>除了 使用 readLine() 傳回值判斷 是否讀到檔尾, 還可</h4>
+    <blockquote>
+    <h4>=&gt; 利用 <font color="#0000FF" size="5"> ready() 判斷是否還有資料</font></h4> 
+    </blockquote>
+    <table width="75%" border="1">
+        <tr>
+            <td>
+                <pre><font face="Arial, Helvetica, sans-serif" size="3">import java.io.*;
+public class ReadFile3{
+    public static void main(String arg[]) throws Exception
+    {
+        // 1. Create a File Stream
+       <font color="#000000"> <b>FileReader FileStream=new FileReader(&quot;</b></font><b><font color="#0000FF">c:\\test\\test.txt&quot;</font><font color="#000000">); </font></b>
+        
+       <font color="#333333"> // 2. Buffered <b>
+        BufferedReader BufferedStream=new BufferedReader(FileStream);
+	    </b></font><b><font color="#009933">
+       </font></b></font><i><b><font color="#000000">//</font><font color="#000000" size="3">判斷是否還有資料</font></b></i><font face="Arial, Helvetica, sans-serif" size="3"><b><font color="#009933">
+        <font color="#FF0000">while (BufferedStream.</font></font></b></font><b><font color="#0000FF" face="Arial, Helvetica, sans-serif" size="5">ready()</font><font color="#009933">) <font color="#000000"> </font></font><font color="#FF0000" size="3">
+    </font><font face="Arial, Helvetica, sans-serif" size="3" color="#FF0000">{
+            //</font><font color="#009933" size="3">讀取資料
+            String </font><font color="#FF0000">data=BufferedStream.readLine();</font></b><font face="Arial, Helvetica, sans-serif" size="3"><font color="#FF0000">
+            System.out.println(data);
+         }</font>
+    }
+}</font>
+</pre>
+            </td>
+        </tr>
+    </table>
+</blockquote>
+<hr>
+<h3 align="center"><font size="5"><font color="#FF0000">輸出</font>資料的部分</font></h3>
+<h3><font size="5">5.3 字元輸出</font></h3> 
+<blockquote>
+    <h4>1. 建立緩衝輸出串流並設定目標區.</h4> 
+    <blockquote>
+        <h4><i>//輸出到標準輸出(screen)</i></h4>
+    </blockquote>
+</blockquote>
+            <h4><font color="#0000FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BufferedWriter wStream=new BufferedWriter ( new 
+            OutputStream</font><font color="#FF0000">Writer</font><font color="#0000FF">(</font><font color="#009933">System.out</font><font color="#0000FF">));</font></h4>
+<blockquote>
+    <blockquote>
+        <blockquote>
+            <p>圖形表示操作結構:</p>
+    <table border="1" bgcolor="#CCFFFF" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="566">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <b>BufferWriter&nbsp; ==&gt;&nbsp; OutputStreamWriter ==&gt; 
+            System.out (輸出到螢幕)</b></td>
+        </tr>
+    </table>
+            <p>　</p>
+        </blockquote>
+        <h4><i>//輸出到檔案</i></h4>
+        <blockquote>
+            <h4><font color="#FF0000">BufferedWriter wStream=new BufferedWriter( new FileWriter(&quot;.</font><font color="#009933">\\BufferedWriter.txt</font><font color="#FF0000">&quot;);</font></h4>
+            <p>圖形表示操作結構:</p>
+    <table border="1" bgcolor="#CCFFFF" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="566">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <b>BufferWriter&nbsp; ==&gt;&nbsp; FileWriter ==&gt;檔案</b></td>
+        </tr>
+    </table>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+        </blockquote>
+    </blockquote>
+    <h4>2. 利用輸出串流將資料寫入目標區</h4> 
+    <blockquote>
+        <h4><font face="Arial, Helvetica, sans-serif" size="3">
+       <b><font color="#FF0000">BufferedWriter&nbsp; </font></b></font>wStream.write(s);</h4>
+        <h4><img src="blueball.gif" width="20" height="20">BufferedWriter 
+        類別的物件有<font color="#0000FF"><b>提供輸出換行功能</b></font>:</h4>
+        <blockquote>
+            <h4>wStream.<font color="#0000FF" size="5"><b>newLine</b></font>();</h4>
+        </blockquote>
+        <table width="75%" border="1">
+            <tr>
+                <td>
+                    <pre><font face="Arial, Helvetica, sans-serif" size="3">// </font><font size="3">輸出螢幕範例
+</font><font face="Arial, Helvetica, sans-serif" size="3">import java.io.*;
+public class WriteTest {
+    public static void main(String args[]) throws Exception
+    {
+       <b><font color="#FF0000">BufferedWriter wStream=new BufferedWriter(</font></b></font></pre>
+                    <pre><b><font face="Arial, Helvetica, sans-serif" size="3" color="#FF0000">                                                               </font></b><font face="Arial, Helvetica, sans-serif" size="3"><b><font color="#FF0000">new OutputStreamWriter(</font><font color="#009933">System.out</font><font color="#FF0000">));
+</font></b>
+       wStream.write(&quot;</font><font size="3">測試測試</font><font face="Arial, Helvetica, sans-serif" size="3">&quot;);
+       wStream.close();
+    }
+}</font></pre>
+                </td>
+            </tr>
+        </table>
+        <p>寫入檔案範例</p>
+        <table width="75%" border="1">
+            <tr>
+                <td>
+                    <pre><font face="Arial, Helvetica, sans-serif" size="3">import java.io.*;
+public class WriteFileTest {
+    public static void main(String args[]) throws Exception
+    {
+        <b><font color="#FF0000">BufferedWriter wStream=new BufferedWriter( new FileWriter(&quot;</font><font color="#009933">.\\WriteFileTest.txt</font><font color="#FF0000">&quot;));
+</font></b>        wStream.write(&quot;</font><font size="3">檔案寫入測試</font><font face="Arial, Helvetica, sans-serif" size="3">&quot;);
+        wStream.newLine();
+        wStream.write(&quot;</font><font size="3">寫入第二行</font><font face="Arial, Helvetica, sans-serif" size="3">&quot;);
+        wStream.close();
+    }
+}</font></pre>
+                </td>
+            </tr>
+        </table>
+        <h4>同學練習看看!</h4>
+        <hr>
+        <p></p>
+        <h4>那如何開一個可以 <font color="#0000FF" size="5"> Append</font> 資料的檔案呢??</h4> 
+        <p>(也就是可以寫一個<font color="#0000FF" size="5"><b>不會蓋掉以前資料</b></font>的檔案)</p>
+        <h4>&lt;解答&gt; </h4>
+        <blockquote>
+        <h4>查一下 <font color="#009933">FileWriter 建構子 </font>=&gt;FileWriter(String fileName, <font color="#FF0000">boolean append</font>) </h4> 
+        </blockquote>
+        <h4>所以只要:</h4>
+        <h4> <font face="Arial, Helvetica, sans-serif" size="3"> <b>BufferedWriter wStream=new BufferedWriter( new FileWriter(".\\WriteFileTest.txt"<font face="Arial, Helvetica, sans-serif" size="3"><b><font color="#FF0000">,true</font></b></font>));</b></font></h4>
+        <h4>即可!</h4>
+        <div align="center">
+          <center>
+          <table border="1" width="58%" bgcolor="#CCFFFF" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="100%">
+                <pre><font size="5">BufferedWriter bw=new BufferedWriter(</font></pre>
+                <pre><font size="5">                      new FileWriter(&quot;<b>d:\\test\\test.txt</b>&quot;,<font color="#FF0000"><b>true</b></font>));
+bw.write(&quot;Append&quot;);
+bw.close();</font></pre>
+              </td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <h4>&lt;同學們試試看&gt;</h4>
+    </blockquote>
+    <h4><img src="blueball.gif" width="20" height="20">範例: CopyFile.java</h4> 
+    <blockquote>
+        <h4>將 line.txt 本文檔copy 到 linenum.txt, 拷貝的過程中順便將行號加上去.</h4> 
+        <h4>1. 開兩個 stream, 一個是 Read 另一個是Write.</h4> 
+        <h4>2. 利用 <b><font color="#FF0000" face="Arial, Helvetica, sans-serif">ready</font></b>() 判斷是否讀到檔尾</h4> 
+        <h4>3. 如何把數字加進檔案中?</h4> 
+        <ul>
+            <li>
+                <h4>數字 --&gt; 字串: <b><font color="#FF0000">    <font face="Arial, Helvetica, sans-serif">String.valueOf(</font></font><font color="#FF0000">數字</font><font face="Arial, Helvetica, sans-serif">);</font></b></h4>
+            </li>
+            <li>
+                <h4>write (數字字串)</h4> 
+            </li>
+        </ul>
+        <blockquote>
+                <p>練習一下:</p>
+          <blockquote>
+                <p>建立一個檔案, 內容為 1 2 3 4 5 .... 100</p>
+          </blockquote>
+        </blockquote>
+        <h4>4. 完整程式</h4> 
+        <table width="75%" border="1">
+            <tr>
+                <td>
+                    <h4><font size="5"><img src="Code.gif" width="31" height="35">CopyFile.java</font></h4>
+                    <pre><font size="4"><font face="Arial, Helvetica, sans-serif">/********************* CopyFile.java ***********************/
+import java.io.*;
+public class <font color="#0000FF">CopyFile</font>
+  {
+  public static void main(String args[]) throws Exception
+    {
+    BufferedReader br = new BufferedReader(
+                                                                   new FileReader(&quot;line.txt&quot;));
+    BufferedWriter bw = new BufferedWriter(
+                                                                   new FileWriter(&quot;linenum.txt&quot;));
+    String space=&quot;  &quot;;
+    int num=0;</font></font></pre>
+                    <pre><font face="Arial, Helvetica, sans-serif" size="4">  <font color="#00FFFF"> </font></font><font size="4"><font color="#0000FF"><i><font face="Arial, Helvetica, sans-serif">// </font>判斷是否可以讀檔</i></font><font face="Arial, Helvetica, sans-serif">
+    while (<font color="#FF0000">br.ready()</font>){</font></font></pre>
+                    <pre><font face="Arial, Helvetica, sans-serif" size="4">         </font><font size="4"><i><font color="#0000FF" face="Arial, Helvetica, sans-serif">// </font><font color="#0000FF">由<font face="Arial, Helvetica, sans-serif">line.txt </font>中讀取一行字串</font></i><font face="Arial, Helvetica, sans-serif">		
+          <font color="#FF0000">String s=br.readLine();	</font></font></font></pre>
+                    <pre style="margin-top: 0; margin-bottom: 0"><font face="Arial, Helvetica, sans-serif" size="4" color="#0000FF">       <i>  </i></font><font size="4"><i><font color="#0000FF" face="Arial, Helvetica, sans-serif">// </font><font color="#0000FF">若讀到檔尾時</font><font face="Arial, Helvetica, sans-serif" color="#0000FF">,</font><font color="#0000FF">則</font><font color="#0000FF" face="Arial, Helvetica, sans-serif">break </font></i><font face="Arial, Helvetica, sans-serif" color="#0000FF">
+ </font><font face="Arial, Helvetica, sans-serif" color="#FF0000">         if (s==null) </font></font></pre>
+                    <pre style="margin-top: 0; margin-bottom: 0"><font color="#FF0000" face="Arial, Helvetica, sans-serif" size="4">                   </font><font size="4"><font color="#FF0000" face="Arial, Helvetica, sans-serif">break;    </font><font color="#0000FF" face="Arial, Helvetica, sans-serif">                            </font><font face="Arial, Helvetica, sans-serif">
+          num++;
+          bw.write(String.<font color="#FF0000"><b>valueOf</b></font>(num));     // </font>把數字寫到<font face="Arial, Helvetica, sans-serif">linenum.txt</font>中<font face="Arial, Helvetica, sans-serif">
+          bw.write(space);                           
+          bw.write(s);                                   // </font>寫入<b><font color="#0000FF">剛讀取</font></b>的字串<font face="Arial, Helvetica, sans-serif">
+          bw.newLine();                               // </font>寫入<b><font color="#0000FF">換行</font></b><font face="Arial, Helvetica, sans-serif">
+     }
+    bw.close();
+    }
+  }</font>
+</font></pre>
+                </td>
+            </tr>
+        </table>
+        <h4>其他問題:</h4>
+        <h4>1. 如何知道檔案是否已經存在? 利用 <font color="#FF0000">File.exists()</font></h4> 
+        <h4>2. 如何建立一個新的空檔? 利用 <font color="#FF0000">File.CrearteNewFile();</font></h4> 
+        <h4>範例程式</h4>
+        <table width="75%" border="1">
+            <tr>
+                <td>
+                    <h4><img src="Code.gif" width="31" height="35"><font face="Arial, Helvetica, sans-serif" size="3">CreateNewFile</font>.java</h4>
+                    <pre><font face="Arial, Helvetica, sans-serif" size="4">import java.io.*;
+public class <font color="#0000FF">CreateNewFile</font> {
+    public static void main (String args[])  throws IOException {
+        File f=new File(&quot;<a href="file:///c://test//Jing.txt">c:\\test\\Jing.txt</a>&quot;);</font></pre>
+                    <pre><font size="4" face="Arial, Helvetica, sans-serif">
+       <font color="#FF0000"> f.createNewFile();</font></font><font size="4" face="Arial, Helvetica, sans-serif">
+        if( </font><font color="#0000FF" face="Arial, Helvetica, sans-serif" size="4"><b>f.exists() </b></font><font size="4"><font face="Arial, Helvetica, sans-serif">== true)
+            System.out.println(&quot;The File </font>存在<font face="Arial, Helvetica, sans-serif">&quot;);
+        else
+            System.out.println(&quot;</font>建檔失敗<font face="Arial, Helvetica, sans-serif">&quot;);
+    }
+}</font></font><font face="Arial, Helvetica, sans-serif" size="4">
+</font></pre>
+                </td>
+            </tr>
+        </table>
+        <h4>　</h4>
+    </blockquote>
+</blockquote>
+<h3><font face="Arial, Helvetica, sans-serif">5.4 </font> 列印資料流</h3>
+<blockquote>
+    <h4><img src="blueball.gif" width="20" height="20">我們可以利用PrintStream 輸出 byte stream</h4> 
+    <blockquote>
+        <h4 align="center"><img src="fig5.4.gif" width="544" height="149" border="1"></h4>
+    </blockquote>
+    <h4><img src="blueball.gif" width="20" height="20">System.out為 PrintStream 
+    型態,故擁有PrintStream所有的功能</h4>
+    <h4 align="center"><img src="fig5.5.gif" width="139" height="137"></h4>
+    <h4><img src="blueball.gif" width="20" height="20">System class中含有 out 物件成員,所以 我們可以用 System.out幫我們列印資料流</h4> 
+    <blockquote>
+        <h4>println() 可以接受 物件,字串,字元陣列,字元,整數,長整數,float, double, boolean number.</h4> 
+        <h4>ex:</h4>
+        <blockquote>
+            <h4>System.out.println(&quot;ABC字串&quot;);</h4>
+        </blockquote>
+    </blockquote>
+    <h4><img src="blueball.gif" width="20" height="20">System.err物件專門負責輸出錯誤message</h4>
+    <h4>&lt;PrintData.java 範例&gt;</h4> 
+    <table width="75%" border="1">
+        <tr>
+            <td>
+                <h4><img src="Code.gif" width="31" height="35">PrintData.java </h4>
+                <pre><font face="Arial, Helvetica, sans-serif" size="3">/************ PrintData.java ***************/
+class PrintData
+  {
+  public static void main(String[] args)
+    {
+    System.out.println(&quot;ABC</font><font size="3">字串</font><font face="Arial, Helvetica, sans-serif" size="3">&quot;);
+    System.out.println('D');
+    System.out.println(356);
+    System.out.println(356.25);
+    System.out.println(true);
+    System.out.println();
+
+    System.err.println(&quot;This is a error&quot;);    // </font><font size="3">列印錯誤訊息
+    </font><font face="Arial, Helvetica, sans-serif" size="3">}
+  }</font>
+&#26;</pre>
+            </td>
+        </tr>
+    </table>
+    <h4>　</h4>
+</blockquote>
+<h3>5.5 列表機輸出</h3> 
+<blockquote>
+    <h4><font face="Arial, Helvetica, sans-serif" size="3">out =&gt; </font><font size="3"> 標準輸出</font><font face="Arial, Helvetica, sans-serif" size="3">(</font><font size="3">螢幕</font><font face="Arial, Helvetica, sans-serif" size="3">)</font></h4>
+    <h4><font face="Arial, Helvetica, sans-serif" size="3">in =&gt; </font><font size="3">  標準輸入</font><font face="Arial, Helvetica, sans-serif" size="3">(</font><font size="3">鍵盤</font><font face="Arial, Helvetica, sans-serif" size="3">)</font></h4>
+    <h4><img src="blueball.gif" width="20" height="20">重新轉向 (redirect):</h4> 
+    <blockquote>
+        <h4>c:\ java PrintData &gt; prn  //印表機</h4> 
+        <h4>c:\ java PrintData &gt;tmp.txt // 檔案</h4> 
+        <h4>c:\ java PrintData &lt; tmp.txt  // 由檔案輸入</h4> 
+    </blockquote>
+</blockquote>
+<hr>
+        <h4>進階部分</h4>
+    <h3><img src="blueball.gif" width="20" height="20">範例<font face="Arial, Helvetica, sans-serif">: Token.java</font></h3> 
+    <blockquote>
+        <h4>利用 <font face="Arial, Helvetica, sans-serif"> Token</font>的方式<font face="Arial, Helvetica, sans-serif">,</font><font color="#FF0000">將讀進來的資料進行剖析</font><font face="Arial, Helvetica, sans-serif"><font color="#FF0000">,</font></font>分成</h4>
+        <blockquote>
+            <h4 align="center"><font face="Arial, Helvetica, sans-serif">1. </font> 數字 
+            <font face="Arial, Helvetica, sans-serif"> 2. </font> 文字</h4>
+        </blockquote>
+        <h4 align="left">進行處理<font face="Arial, Helvetica, sans-serif">.</font></h4>
+        <h4>=&gt;</h4>
+        <h4>1. 建立一個 BufferedRead 的stream=&gt; 讀檔的工作</h4> 
+        <h4>2.利用 <font color="#FF0000">StreamTokenizer</font> 物件幫我們處理辨別的工作</h4> 
+        <blockquote>
+            <h4>例: (<font color="#0000FF">把 input stream丟給 StreamTokenizer處理</font>)</h4> 
+            <h4>StreamTokenizer st= new StreamTokenizer(讀取檔案Stream);</h4> 
+            <h4><img src="blueball.gif" width="20" height="20">設定 StreamTokenizer </h4> 
+            <blockquote>
+                <h4>1.把不要處理的東西設定成空白:</h4>
+                <blockquote>
+                    <h4>st.whitespaceChars(0,32);  // 指定 0&lt;= c &lt;=32的character全設為空白</h4> 
+                </blockquote>
+                <h4>2.是否要判斷 end of line</h4> 
+                <blockquote>
+                    <h4>如: st.eollsSignificant(true); // 開啟判斷 end of line的功能</h4> 
+                </blockquote>
+            </blockquote>
+            <h4><img src="blueball.gif" width="20" height="20">OK, 設定好了,現在如何作 ?</h4> 
+            <blockquote>
+                <h4>利用 <font face="Arial, Helvetica, sans-serif">int TokenType= st.<b><font color="#FF0000">nextToken</font></b>() 
+                </font> 得到目前的字串是屬於哪一類<font face="Arial, Helvetica, sans-serif">?</font></h4>
+                <h4><font face="Arial, Helvetica, sans-serif">1. st.TT_NUMBER: </font> 數字</h4>
+                <h4><font face="Arial, Helvetica, sans-serif">2. st.TT_WORD: </font> 文字</h4>
+                <h4><font face="Arial, Helvetica, sans-serif">3. st.TT_EOF: end of file</font></h4> 
+                <h4><font face="Arial, Helvetica, sans-serif">4. st.TT_EOL: end of line</font></h4>
+            </blockquote>
+        </blockquote>
+        <h4><font face="Arial, Helvetica, sans-serif">3. </font> 完整程式範例 
+        <font face="Arial, Helvetica, sans-serif"> Token.java</font></h4>
+        <table width="75%" border="1">
+            <tr>
+                <td>
+                    <h4><img src="Code.gif" width="31" height="35"> <font face="Arial, Helvetica, sans-serif">Token.java</font></h4>
+                    <pre><font face="Arial, Helvetica, sans-serif" size="3">/*************************** Token.java ******************/
+import java.io.*;
+public class <font color="#0000FF">Token</font>
+  {
+  public static void main(String args[]) throws IOException
+    {
+    <font color="#FF0000">BufferedReader br = new BufferedReader(
+                        new FileReader(&quot;linenum.txt&quot;));</font>
+    BufferedWriter bw = new BufferedWriter(
+                        new FileWriter(&quot;token.txt&quot;));
+   <font color="#FF0000"> StreamTokenizer st=new StreamTokenizer(br);</font>
+    int tokenType;
+   <font color="#FF0000"> st.whitespaceChars(0,32);               //0-32</font></font><font size="3"><font color="#FF0000">為空白字元</font>
+    </font><font face="Arial, Helvetica, sans-serif" size="3">st.eolIsSignificant(true);
+    while (br.ready())
+      {
+     <font color="#0000FF"> tokenType=st.nextToken();</font>
+      switch (tokenType)
+        {
+        case <font color="#0000FF">StreamTokenizer.TT_NUMBER:</font>
+          bw.write(String.valueOf((long)<font color="#FF0000">st.nval</font>));// </font><font size="3">把分析出來的數字寫到檔案中
+          </font><font face="Arial, Helvetica, sans-serif" size="3">bw.newLine();
+          break;
+        case <font color="#0000FF">StreamTokenizer.TT_WORD:</font>
+          bw.write(st.<font color="#FF0000">sval</font>);                               // </font><font size="3">把</font><font face="Arial, Helvetica, sans-serif" size="3">Word </font><font size="3">寫到檔案中
+          </font><font face="Arial, Helvetica, sans-serif" size="3">bw.newLine();
+          break;
+        default:
+          ;
+        }
+      }
+    bw.close();
+    }
+  }
+</font></pre>
+                </td>
+            </tr>
+        </table>
+        <h4>　</h4>
+        <h4>　</h4>
+    </blockquote>
+        <p>　</p>
+<blockquote>
+    <blockquote>
+        <h4>　</h4>
+    </blockquote>
+    <h4>　</h4>
+    <blockquote>
+        <h4>　</h4>
+        <h4>　</h4>
+        <ul>
+            <blockquote>
+                <p>　</p>
+            </blockquote>
+        </ul>
+        <h4>　</h4>
+    </blockquote>
+</blockquote>
+<h4 align="left">　</h4>
+<h4 align="center">　</h4>
+<h3>　</h3>
+<blockquote>
+    <h4 align="left">　</h4>
+</blockquote>
+<h4 align="left">　</h4>
+<blockquote>
+    <h3 align="left">　</h3>
+</blockquote>
+<h3 align="left">　</h3>
+<blockquote>
+    <h3 align="left">　</h3>
+</blockquote>
+</body>
+</html>

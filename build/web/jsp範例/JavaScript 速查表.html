@@ -1,0 +1,608 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=big5">
+<title>JavaScript</title>
+<style type="text/css"><!-- a:hover{color:#ffff66; text-decoration:underline }--></style>
+</head>
+
+
+<body bgcolor="#000000" text="#FFFFFF" link="#00FFFF" vlink="#cccccc" alink="#FFFFFF">
+<font face="Arial, Helvetica, Verdana">
+<table border=0 width='100%'><tr><a name="page_top">
+<center><h2>JavaScript</h2></center>
+
+</td></tr>
+<tr><td bgcolor='#000099'>&nbsp;</td>
+<td bgcolor='#999999'>&nbsp;</td>
+</tr><tr><td valign='top' bgcolor='#666600' nowrap width=120><ul>
+<li><a href="index.html">首頁</a>
+<li><a href="js_tut_intro.htm">簡介</a>
+<li><a href="js_tut_a0.htm">初階教學</a>
+<li><a href="js_tut_b0.htm">中階教學</a>
+<li><a href="js_tut_c0.htm">高階教學</a>
+<li><a href="js_example.htm">例子</a>
+<li><a href="js_qref.htm">速查表</a>
+<li><a href="js_bughole.htm">蟲與洞</a>
+<li><a href="js_browser.htm">瀏覽器</a>
+<li><a href="js_joke.htm">鬆一鬆</a>
+</ul>
+</td><td><center></center><br><br>
+
+
+
+
+
+<h2 align="center">JavaScript 速查表</h2>
+
+<hr>
+<div align="center"><center>
+
+<table border="1">
+  <tr>
+    <td><ul>
+      <li><a href="#物件">物件</a></li>
+      <li><a href="#內建函數">內建函數</a></li>
+      <li><a href="#運算元">運算子</a></li>
+      <li><a href="#保留字">保留字</a></li>
+    </ul>
+    </td>
+  </tr>
+</table>
+</center></div>
+
+<h3><a name="物件">物件</a></h3>
+
+<blockquote>
+  <table border="1">
+    <tr>
+      <th nowrap><strong>物件</strong></th>
+      <th valign="top" nowrap>方法</th>
+      <th valign="top" nowrap>屬性</th>
+      <th valign="top" nowrap>事件</th>
+    </tr>
+    <tr>
+      <td nowrap><strong>document</strong></td>
+      <td valign="top" nowrap>close()<br>
+      open(<em>mimeType</em>, &quot;replace&quot;)<br>
+      write(<em>html</em>)<br>
+      writeln(<em>html</em>)</td>
+      <td valign="top" nowrap>alinkColor<br>
+      anchors[ ]<br>
+      bgColor<br>
+      cookie<br>
+      fgColor<br>
+      forms[ ]<br>
+      lastModified<br>
+      linkColor<br>
+      links[ ]<br>
+      location<br>
+      referrer<br>
+      title<br>
+      vlinkColor</td>
+      <td valign="top" nowrap>onClick<br>
+      onDblClick<br>
+      onKeyDown<br>
+      onKeyPress<br>
+      onKeyUp<br>
+      onMouseDown<br>
+      onMouseUp</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>links[ ]</strong></td>
+      <td valign="top" nowrap>　</td>
+      <td valign="top" nowrap>hash<br>
+      host<br>
+      hostname<br>
+      href<br>
+      pathname<br>
+      port<br>
+      protocol<br>
+      search<br>
+      target</td>
+      <td valign="top" nowrap>onClick<br>
+      onMouseOver</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>forms[ ]</strong></td>
+      <td valign="top" nowrap>submit()</td>
+      <td valign="top" nowrap>action<br>
+      elements<br>
+      encoding<br>
+      method<br>
+      target</td>
+      <td valign="top" nowrap>onSubmit</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>button</strong></td>
+      <td valign="top" nowrap>click()</td>
+      <td valign="top" nowrap>name<br>
+      value</td>
+      <td valign="top" nowrap>onClick</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>submit</strong></td>
+      <td valign="top" nowrap>click()</td>
+      <td valign="top" nowrap>name<br>
+      value</td>
+      <td valign="top" nowrap>onClick</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>reset</strong></td>
+      <td valign="top" nowrap>click()</td>
+      <td valign="top" nowrap>name<br>
+      value</td>
+      <td valign="top" nowrap>onClick</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>text</strong></td>
+      <td valign="top" nowrap>focus()<br>
+      blur()<br>
+      select()</td>
+      <td valign="top" nowrap>defaultValue<br>
+      name<br>
+      value</td>
+      <td valign="top" nowrap>onBlur<br>
+      onChange<br>
+      onFocus<br>
+      onSelect</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>textarea</strong></td>
+      <td valign="top" nowrap>focus()<br>
+      blur()<br>
+      select()</td>
+      <td valign="top" nowrap>defaultValue<br>
+      name<br>
+      value</td>
+      <td valign="top" nowrap>onBlur<br>
+      onChange<br>
+      onFocus<br>
+      onSelect</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>select</strong></td>
+      <td valign="top" nowrap>blur()<br>
+      focus()<br>
+      </td>
+      <td valign="top" nowrap>length<br>
+      name<br>
+      options[ ]<br>
+      selectedIndex</td>
+      <td valign="top" nowrap>onBlur<br>
+      onFocus<br>
+      onChange</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>option</strong></td>
+      <td valign="top" nowrap>　</td>
+      <td valign="top" nowrap>defaultSelected<br>
+      index<br>
+      length<br>
+      name<br>
+      options<br>
+      selected<br>
+      selectedIndex<br>
+      text<br>
+      value</td>
+      <td valign="top" nowrap>　</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>checkbox</strong></td>
+      <td valign="top" nowrap>click()</td>
+      <td valign="top" nowrap>name<br>
+      value<br>
+      checked<br>
+      defaultChecked</td>
+      <td valign="top" nowrap>onClick</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>radio</strong></td>
+      <td valign="top" nowrap>click()</td>
+      <td valign="top" nowrap>checked<br>
+      defaultChecked<br>
+      length<br>
+      name<br>
+      value</td>
+      <td valign="top" nowrap>onClick</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>password</strong></td>
+      <td valign="top" nowrap>focus()<br>
+      blur()<br>
+      select()</td>
+      <td valign="top" nowrap>name<br>
+      value<br>
+      defaultValue</td>
+      <td valign="top" nowrap>　</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>hidden</strong></td>
+      <td valign="top" nowrap>　</td>
+      <td valign="top" nowrap>name<br>
+      value</td>
+      <td valign="top" nowrap>　</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>navigator</strong></td>
+      <td valign="top" nowrap>　</td>
+      <td valign="top" nowrap>appCodeName<br>
+      appName<br>
+      appVersion<br>
+      mimeTypes[ ]<br>
+      plugins[ ]<br>
+      userAgent</td>
+      <td valign="top" nowrap>　</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>window</strong></td>
+      <td valign="top" nowrap>alert(<em>message</em>)<br>
+      close()<br>
+      confirm(<em>message</em>)<br>
+      open(<em>url, name, features</em>)<br>
+      prompt(<em>message, inputDefault</em>)<br>
+      setTimeout(<em>statement, delay</em>)<br>
+      clearTimeout(<em>timer</em>)</td>
+      <td valign="top" nowrap>defaultStatus<br>
+      frames[ ]<br>
+      length<br>
+      name<br>
+      opener<br>
+      parent<br>
+      self<br>
+      status<br>
+      top<br>
+      window</td>
+      <td valign="top" nowrap>onLoad<br>
+      onUnload</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>location</strong></td>
+      <td valign="top" nowrap>reload()<br>
+      replace(<em>url</em>)</td>
+      <td valign="top" nowrap>hash<br>
+      host<br>
+      hostname<br>
+      href<br>
+      pathname<br>
+      port<br>
+      protocol<br>
+      search</td>
+      <td valign="top" nowrap>　</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>history</strong></td>
+      <td valign="top" nowrap>back()<br>
+      forward()<br>
+      go(<em>location</em>)</td>
+      <td valign="top" nowrap>length</td>
+      <td valign="top" nowrap>　</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>string</strong></td>
+      <td valign="top" nowrap>anchor(<em>name</em>)<br>
+      big()<br>
+      blink()<br>
+      bold()<br>
+      charAt(<em>index</em>)<br>
+      fixed()<br>
+      fontcolor(<em>color</em>)<br>
+      fontsize(<em>size</em>)<br>
+      indexOf(<em>findString, </em>[<em>startingIndex</em>])<br>
+      italics()<br>
+      lastIndexOf(<em>findString, </em>[<em>startingIndex</em>])<br>
+      link(<em>href</em>)<br>
+      small()<br>
+      strike()<br>
+      sub()<br>
+      substring(<em>firstIndex, lastIndex</em>)<br>
+      sup()<br>
+      toLowerCase()<br>
+      toUpperCase()</td>
+      <td valign="top" nowrap>length</td>
+      <td valign="top" nowrap>　</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>Date</strong></td>
+      <td valign="top" nowrap>getDate()<br>
+      getDay()<br>
+      getHours()<br>
+      getMinutes()<br>
+      getMonth()<br>
+      getSeconds()<br>
+      getTime()<br>
+      getTimezoneOffset()<br>
+      getYear()<br>
+      parse(<em>datevalue</em>)<br>
+      setDate(<em>dateValue</em>)<br>
+      setHours(<em>hoursValue</em>)<br>
+      setMinutes(<em>minutesValue</em>)<br>
+      setMonth(<em>monthValue</em>)<br>
+      setSeconds(<em>second</em>)<br>
+      setTime(<em>timeValue</em>)<br>
+      setYear(<em>yearValue</em>)<br>
+      toGMTString()<br>
+      toLocaleString()<br>
+      UTC(<em>yearValue, monthValue,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dateValue, hoursValue,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; minutesValue, secondsValue</em>)</td>
+      <td valign="top" nowrap>　</td>
+      <td valign="top" nowrap>　</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>Math</strong></td>
+      <td valign="top" nowrap>abs(<em>number</em>)<br>
+      acos(<em>number</em>)<br>
+      asin(<em>number</em>)<br>
+      atan(<em>number</em>)<br>
+      atan2(<em>y , x</em>)<br>
+      ceil(<em>number</em>)<br>
+      cos(<em>number</em>)<br>
+      exp(<em>number</em>)<br>
+      floor(<em>number</em>)<br>
+      log(<em>number</em>)<br>
+      max(<em>number1, number2</em>)<br>
+      min(<em>number1, number2</em>)<br>
+      pow(<em>number1, number2</em>)<br>
+      random()<br>
+      round(<em>number</em>)<br>
+      sin(<em>number</em>)<br>
+      sqrt(<em>number</em>)<br>
+      tan(<em>number</em>)</td>
+      <td valign="top" nowrap>E<br>
+      LN10<br>
+      LN2<br>
+      LOG10E<br>
+      LOG2E<br>
+      PI<br>
+      SQRT1_2<br>
+      SQRT2</td>
+      <td valign="top" nowrap>　</td>
+    </tr>
+    <tr>
+      <td nowrap><strong>Image</strong></td>
+      <td valign="top" nowrap>　</td>
+      <td valign="top" nowrap>border<br>
+      complete<br>
+      height<br>
+      hspace<br>
+      lowsrc<br>
+      name<br>
+      src<br>
+      vspace<br>
+      width</td>
+      <td valign="top" nowrap>onLoad<br>
+      onError<br>
+      onAbort</td>
+    </tr>
+  </table>
+</blockquote>
+<blaokquote>
+
+<p>　</p>
+
+<h3><a name="內建函數">內建函數</a></h3>
+
+<blockquote>
+  <table border="1" width="228">
+    <tr>
+      <th nowrap>內建函數</th>
+      <th nowrap>可能傳回的資料型態</th>
+    </tr>
+    <tr>
+      <td nowrap>escape(<em>string</em>)</td>
+      <td nowrap>字串(&quot;%xx&quot;)</td>
+    </tr>
+    <tr>
+      <td nowrap>eval(<em>string</em>)</td>
+      <td nowrap>字串，數目，布林</td>
+    </tr>
+    <tr>
+      <td nowrap>isNaN(<em>test_value</em>)</td>
+      <td nowrap>布林</td>
+    </tr>
+    <tr>
+      <td nowrap>parseFloat(<em>string</em>)</td>
+      <td nowrap>浮點數，&quot;NaN&quot;，0</td>
+    </tr>
+    <tr>
+      <td nowrap>parseInt(<em>string, base</em>)</td>
+      <td nowrap>整數</td>
+    </tr>
+    <tr>
+      <td nowrap>unescape(<em>string</em>)</td>
+      <td nowrap>字串</td>
+    </tr>
+  </table>
+  <p>　</p>
+</blockquote>
+
+<h3><a name="運算元">運算子</a></h3>
+
+<ol>
+  <li>運算子列表：<br>
+    <table border="1" width="220">
+      <tr>
+        <th nowrap width="87">運算子類別</th>
+        <th nowrap width="123">運算子</th>
+      </tr>
+      <tr>
+        <td nowrap width="87">算術</td>
+        <td nowrap width="123">+&nbsp;&nbsp; ++&nbsp;&nbsp; -&nbsp;&nbsp; --&nbsp;&nbsp; * 
+        &nbsp;&nbsp; / </td>
+      </tr>
+      <tr>
+        <td nowrap width="87">字串</td>
+        <td nowrap width="123">+&nbsp;&nbsp; +=</td>
+      </tr>
+      <tr>
+        <td nowrap width="87">邏輯</td>
+        <td nowrap width="123">&amp;&amp;&nbsp;&nbsp; ||&nbsp;&nbsp; !</td>
+      </tr>
+      <tr>
+        <td nowrap width="87">位元</td>
+        <td nowrap width="123">&amp;&nbsp;&nbsp; ^&nbsp;&nbsp; |&nbsp;&nbsp; ~ &nbsp;&nbsp; 
+        &lt;&lt;&nbsp;&nbsp; &gt;&gt;&nbsp;&nbsp; &gt;&gt;&gt;</td>
+      </tr>
+      <tr>
+        <td nowrap width="87">指定</td>
+        <td nowrap width="123">=&nbsp;&nbsp; +=&nbsp;&nbsp; -=&nbsp;&nbsp; *=&nbsp;&nbsp; /= 
+        &nbsp;&nbsp; %=&nbsp;&nbsp; &amp;=&nbsp;&nbsp; ^=&nbsp;&nbsp; |=&nbsp;&nbsp; &lt;&lt;= 
+        &nbsp;&nbsp; &gt;&gt;=&nbsp;&nbsp; &gt;&gt;&gt;=</td>
+      </tr>
+      <tr>
+        <td nowrap width="87">比較</td>
+        <td nowrap width="123">==&nbsp;&nbsp; !=&nbsp;&nbsp; &gt;&nbsp;&nbsp; &gt;= &nbsp;&nbsp; 
+        &lt;&nbsp;&nbsp; &lt;=</td>
+      </tr>
+      <tr>
+        <td nowrap width="87">特別</td>
+        <td nowrap width="123">?:</td>
+      </tr>
+    </table>
+  </li>
+  <li>運算子的優先次序： ( 最優先執行的運算子排第一 )<br>
+    <table border="1">
+      <tr>
+        <th width="13%">運算子類別</th>
+        <th width="87%">運算子</th>
+      </tr>
+      <tr>
+        <td width="13%">呼叫，會員</td>
+        <td width="87%">()&nbsp; []</td>
+      </tr>
+      <tr>
+        <td width="13%">反相，增減</td>
+        <td width="87%">!&nbsp; ++&nbsp; --</td>
+      </tr>
+      <tr>
+        <td width="13%">乘除，餘數</td>
+        <td width="87%">*&nbsp; /&nbsp; %</td>
+      </tr>
+      <tr>
+        <td width="13%">加法，減法</td>
+        <td width="87%">+&nbsp; -</td>
+      </tr>
+      <tr>
+        <td width="13%">移位</td>
+        <td width="87%">&lt;&lt;&nbsp; &gt;&gt;&nbsp; &gt;&gt;&gt;</td>
+      </tr>
+      <tr>
+        <td width="13%">關係</td>
+        <td width="87%">&lt;&nbsp; &lt;=&nbsp; &gt;&nbsp; &gt;=</td>
+      </tr>
+      <tr>
+        <td width="13%">相等，不等</td>
+        <td width="87%">==&nbsp; !=</td>
+      </tr>
+      <tr>
+        <td width="13%">位元 AND</td>
+        <td width="87%">&amp;</td>
+      </tr>
+      <tr>
+        <td width="13%">位元 XOR</td>
+        <td width="87%">^</td>
+      </tr>
+      <tr>
+        <td width="13%">位元 OR</td>
+        <td width="87%">|</td>
+      </tr>
+      <tr>
+        <td width="13%">邏輯 AND</td>
+        <td width="87%">&amp;&amp;</td>
+      </tr>
+      <tr>
+        <td width="13%">邏輯 OR</td>
+        <td width="87%">||</td>
+      </tr>
+      <tr>
+        <td width="13%">條件</td>
+        <td width="87%">?:</td>
+      </tr>
+      <tr>
+        <td width="13%">設定</td>
+        <td width="87%">=&nbsp; +=&nbsp; -+&nbsp; *=&nbsp; /=&nbsp; %=</td>
+      </tr>
+      <tr>
+        <td width="13%">逗號</td>
+        <td width="87%">,</td>
+      </tr>
+    </table>
+  </li>
+</ol>
+
+<h3><a name="保留字">保留字</a></h3>
+
+<blockquote>
+  <p>保留字不可以用作變數、函數及物件名稱。</p>
+  <table BORDER="1">
+    <tr>
+      <td valign="top">abstract<br>
+      boolean<br>
+      break<br>
+      byte<br>
+      case<br>
+      catch<br>
+      char<br>
+      class<br>
+      const <br>
+      continue <br>
+      default <br>
+      delete <br>
+      do<br>
+      double </td>
+      <td valign="top">else <br>
+      extends <br>
+      false<br>
+      final <br>
+      finally <br>
+      float <br>
+      for <br>
+      function<br>
+      goto <br>
+      if <br>
+      implements <br>
+      import <br>
+      in <br>
+      instanceof </td>
+      <td valign="top">int <br>
+      interface<br>
+      long <br>
+      native <br>
+      new<br>
+      null<br>
+      package<br>
+      private<br>
+      protected<br>
+      public return<br>
+      short<br>
+      static <br>
+      super </td>
+      <td valign="top">switch <br>
+      synchronized <br>
+      this<br>
+      throw <br>
+      throws <br>
+      transient <br>
+      true <br>
+      try <br>
+      typeof<br>
+      var <br>
+      void <br>
+      while<br>
+      with </td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr>
+
+<br><br><br>
+<center>
+<br><br>
+ <a href="#page_top">到頁頂</a>
+ <a href="index.html" tppabs="http://home4u.hongkong.com/entertainment/music/mpx/js/index.html">首頁</a>
+ <a href="js_qref.htm" tppabs="http://home4u.hongkong.com/entertainment/music/mpx/js/js_qref.htm">速查表</a>
+ 
+</center>
+</body></html>

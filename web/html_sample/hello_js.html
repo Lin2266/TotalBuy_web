@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Hello JavaScript</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--javaScript方法移走標籤要留著, 為非同步請求-->
+        <script src="hello_js.js" type="text/javascript" charset="utf-8"></script>
+        
+    </head>
+    <!--要歡迎加這-->
+    <body onload="onloadHandler()">
+        <h2>Hello JavaScript</h2>
+        <hr> 
+        <!--id="name"輸入的值，placeholder欄位框內內容-->
+        <input id="name" placeholder="請輸入姓名"><br>
+        <button onclick="helooHandler()">Hello</button>
+        <!--會顯示兩個警告訊息，<a>本身就會送出請求
+        <a href="" onclick="onloadHandler()"></a>-->
+        <!--執行js(javascript)的方法必需要這樣宣告-->
+        <a href="javascript:helooHandler()">Hello</a>
+        <div id="helloDiv">歡迎</div>
+        <hr>
+        <!--為錯誤示範，因為非同步，所以畫面出來不一定會顯示，
+        跑到哪跟網路速度也有關
+        <script>
+            document.write('歡迎,載入時間是:'+loadTime);
+        </script>-->
+         <script>
+            document.write('歡迎,載入時間是:'+loadTime);
+        </script>
+    </body>
+</html>

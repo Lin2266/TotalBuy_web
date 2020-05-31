@@ -1,0 +1,107 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package uuu.totalbuy.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import uuu.totalbuy.domain.Customer;
+import uuu.totalbuy.domain.Order;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import uuu.totalbuy.domain.TotalBuyException;
+import uuu.totalbuy.model.OrderService;
+import uuu.totalbuy.model.OrdersDAO;
+
+/**
+ *
+ * @author Administrator
+ */
+@WebServlet(name = "OrderHistoryServlet", urlPatterns = {"/user/OrderHistoryServlet.do"})
+public class OrderHistoryServlet extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, TotalBuyException {
+        HttpSession session = request.getSession();
+        Customer user = (Customer) session.getAttribute("user");
+
+        if (user == null) {
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return;
+        }
+        
+        String submit = request.getParameter("submit");
+        
+         OrdersDAO dao = new OrdersDAO();
+
+        if ("取消訂單".equals(submit)) {
+            
+         dao.Newdelete(Integer.parseInt(request.getParameter("hiname"))); // 這裡接隱藏id 的, 因為接過來是字串, 你轉成int 型態, 所以用 Integer.parseInt(字串)
+         
+          response.sendRedirect(request.getContextPath()+"/user/orders_history.jsp");
+
+        
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+//    @Override
+//    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//        processRequest(request, response);
+//    }
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            processRequest(request, response);
+        } catch (TotalBuyException ex) {
+            Logger.getLogger(OrderHistoryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}

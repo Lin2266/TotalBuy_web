@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>iframe.html</title>
+<script>
+            
+            function copyFn(id){
+            var val = document.getElementById(id);
+            window.getSelection().selectAllChildren(val);//獲取要複製的內容
+            document.execCommand ("Copy");//進行復制操作
+            alert("複製成功")
+            }
+        </script>
+</head>
+<body>
+<div id="test">www.jb51.net</div>
+
+<p id="copyWeChat">要複製的內容</p>
+<button onclick="copyFn('copyWeChat')">複製</button>
+<br/>
+<br/>
+
+輸入要複製的內容：
+<br/>
+<textarea id="text"></textarea>
+<br/>
+<br/>
+<button class="clipboard" data-clipboard-target="text">點我複製</button>
+<br/>
+<br/>
+貼上測試：
+<br/>
+<textarea id="text1"></textarea>
+</body>
+</html>

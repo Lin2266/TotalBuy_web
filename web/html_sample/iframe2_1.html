@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <script type="text/javascript">
+        //jQuery操作父页面的元素
+        $("#parentBox",parent.document).css('color','red');
+        //原生的方法操作父页面元素
+        var parentRed = window.parent.document.getElementById("parentBox").style.backgroundColor = 'blue';
+        //调用父页面的方法
+        parent.methodParent();
+        //使用父页面的变量
+        var _children = parent._parent1;
+        console.log(_children);     
+    </script>
+    </head>
+   <!--  内嵌的iframe页面 iframeChildren.html-->
+
+    <body>
+        <div id="childrenBox">我是孩子</div>        
+    </body>
+</html>
