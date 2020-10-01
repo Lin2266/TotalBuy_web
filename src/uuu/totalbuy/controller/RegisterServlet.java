@@ -30,6 +30,7 @@ import uuu.totalbuy.domain.BloodType;
 import uuu.totalbuy.domain.Customer;
 import uuu.totalbuy.model.CustomerService;
 
+
 /**
  *
  * @author Administrator

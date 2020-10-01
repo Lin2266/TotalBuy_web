@@ -2,7 +2,7 @@
 <!--在Tomcat上設定Data Source(ConnectionPool連線儲存池)-->
 <!--factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
 org.apache.catalina.users.MemoryUserDatabaseFactory-->
-<Context antiJARLocking="true" path="/totalbuy">
+<Context path="/TotalBuy_web">
     <Resource
         auth="Container"
         name="jdbc/totalbuy"
@@ -10,7 +10,7 @@ org.apache.catalina.users.MemoryUserDatabaseFactory-->
         driverClassName="com.mysql.jdbc.Driver"
         url="jdbc:mysql://localhost:3306/totalbuy?zeroDateTimeBehavior=convertToNull;characterEncoding=utf-8"
         username="root"
-        password="root1234"
+        password="123456"
         maxIdle="10"
         maxWait="-1" 
         factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"

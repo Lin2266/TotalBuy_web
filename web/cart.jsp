@@ -49,7 +49,7 @@
                 <td><%= p instanceof Outlet ? ((Outlet) p).getListPrice() : p.getUnitPrice()%></td>
                 <td><%= p instanceof Outlet ? ((Outlet) p).getDiscount() : ""%></td>
                 <td><%= nf.format(p.getUnitPrice())%></td>
-                <td><input style="width:5ex" type="number" value="<%= cart.getQuentity(p)%>" name="quantity_<%= p.getId()%>" min="1" max="5"</td>
+                <td><input style="width:5ex" type="number" value="<%= cart.getQuentity(p)%>" name="quantity_<%= p.getId()%>" min="1" max="5"></td>
                 <td><input type="checkbox" name="delete_<%= p.getId()%>"></td>   
             </tr>
             <%}
